@@ -1,38 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useEffect, useState } from 'react'
 import { SignOut } from './Login'
 import { auth, db } from '../fbaseapp.js'
-import { query, collection, orderBy, limit, onSnapshot } from "firebase/firestore"; 
+import { query, collection, orderBy, limit, onSnapshot, getDocs, doc} from "firebase/firestore"; 
 import SendMsg from './SendMsg';
+import { async } from '@firebase/util';
 
 
 function Chat() {
     const [messages, setMsgs] = useState([])
-    
-    async function getColData () {
-        const msgsCol = collection(db, 'messages')
-        const q = query(msgsCol, orderBy("createdAt"), limit(10));
-        
-        let dataList = [];
-        
-        onSnapshot(q, (qS) => {
-            
-            qS.forEach((doc) => {
-                let docData = doc.data()
-                docData.id = doc.id
-                dataList.push(docData);
-            });
 
-            setMsgs(dataList)
+    async function getChatMessages() {
 
-            console.log("List of messages: ", dataList);
+        const q = query(collection(db, "messages"), orderBy("createdAt"), limit(30));
+        const unsub = onSnapshot(q, (qS) => {
 
+            console.log(" data: ", qS);
+            setMsgs(qS.docs.map((doc) => {
+                let msgData = doc.data()
+                msgData.id = doc.id
+                return msgData
+            }))
         });
-                    
-
+        
     }
 
     useEffect(()=> {
-        getColData()
+
+        getChatMessages()
 
     }, [] )
 
@@ -41,16 +36,14 @@ function Chat() {
         <div>
             <h2>Welcome!</h2>
             <SignOut />
-
             <div>
                 <div>
                     {messages.map(({id, text, photoURL, uid})=> (
                             
-                            <div key={id} className={`msg ${uid == auth.currentUser.uid ? 'sent' : 'received' }`}>
-                                key = {id}
-                                <img src={photoURL} alt="User profile image"></img>
-                                <p>{text}</p>
-                            </div>
+                        <div key={id} className={`msgbubble msg ${uid == auth.currentUser.uid ? 'sent' : 'received' }`}>
+                            <img src={photoURL} alt="User profile image"></img>
+                            <p>{text}</p>
+                        </div>
 
                     ))}
                 </div>

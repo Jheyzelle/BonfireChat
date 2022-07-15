@@ -19,11 +19,12 @@ function SendMsg() {
 
         setMsg('')
     }
+    
     return (
-        <div>
+        <div className='div-msg-input'>
             <form onSubmit={sendMsg}>
                 <input value={msg} onChange={(e)=>setMsg(e.target.value)} placeholder='Message lobby' />
-                <button type='submit'>Send</button>
+                <button className='btn-msgsend' type='submit' >▶</button>
             </form>
         </div>
     )
