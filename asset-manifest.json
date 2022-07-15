@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/BonfireChat/static/css/main.e354af54.css",
+    "main.js": "/BonfireChat/static/js/main.7e2355a6.js",
+    "static/js/787.db06ff48.chunk.js": "/BonfireChat/static/js/787.db06ff48.chunk.js",
+    "index.html": "/BonfireChat/index.html",
+    "main.e354af54.css.map": "/BonfireChat/static/css/main.e354af54.css.map",
+    "main.7e2355a6.js.map": "/BonfireChat/static/js/main.7e2355a6.js.map",
+    "787.db06ff48.chunk.js.map": "/BonfireChat/static/js/787.db06ff48.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e354af54.css",
+    "static/js/main.7e2355a6.js"
+  ]
+}
