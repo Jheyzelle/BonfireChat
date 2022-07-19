@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: monospace;
 }
 
 :root {
@@ -12,17 +15,27 @@
   --pcol5: #FFB49A;
 }
 
+body {
+  background-color: #162637;
+}
+
 h1.site-title {
   text-align: center;
-
+  font-family: monospace, Arial;
   font-size: 5em;
-  
-  background: linear-gradient( rgb(238, 255, 174), rgb(255, 130, 46), var(--pcol4) 70%);;
+
+  background: linear-gradient(rgb(238, 255, 174), rgb(255, 130, 46), var(--pcol4) 70%);
+  ;
 
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
-  
+}
+
+.flexdiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sec-landing {
@@ -30,47 +43,258 @@ h1.site-title {
   width: 100%;
   height: 100vh;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  
   background-color: #162637;
-  background-image: url(https://images.unsplash.com/photo-1504470695779-75300268aa0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80);
-  background-size: cover;
+  background-image: url("./assets/images/bfire-logo.gif");
+  background-size: 200px;
   background-repeat: no-repeat;
-  background-position: center 70%;
+  background-position: center 90%;
+  flex-direction: column;
+
+}
+
+#fcr {
+  width: 100%;
+  padding: 20px;
+
+  color: var(--pcol1);
+
+  text-align: center;
+
 }
 
 .landing-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #17183B99;
+  background-color: #17183B80;
 }
 
 .btn-signin {
   margin-top: 20px;
   padding: 10px;
-  width: 200px;
-  max-width: 1000px;
-  
+  min-width: 200px;
+
+
   background: var(--pcol4);
   color: var(--pcol2);
   font-size: large;
   border: none;
   border-radius: 20px;
 
-  font-family: Arial, Helvetica, sans-serif;
-
   font-weight: bold;
   transition: all 0.2s;
 }
 
-.btn-signin:hover {
-  background-color: var(--pcol5) ;
+.btn-signin:hover,
+.btn-signout:hover {
+  background-color: var(--pcol5);
+  cursor: pointer;
 
+}
+
+.btn-signout {
+
+  padding: 10px;
+  background: transparent;
+  color: var(--pcol1);
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2ms;
+
+}
+
+.btn-signout:hover {
+  background-color: transparent;
+  color: var(--pcol4);
+  border-bottom: 2px solid var(--pcol4);
+
+}
+
+/* ========== nav content ========== */
+.top-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+
+}
+
+.top-nav h1 {
+  background: linear-gradient(rgb(238, 255, 174), rgb(255, 130, 46), var(--pcol4) 70%);
+  ;
+
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+}
+
+.uname {
+  background: transparent;
+  color: var(--pcol1);
+  font-size: 1.3em;
+
+  border: none;
+  padding: 10px;
+
+}
+
+.top-nav span {
+  text-align: right;
+}
+
+/* ========== messages container ========== */
+.sec-chat {
+  background-color: #162637;
+  background-image: url(./assets/images/bfire-logo.gif);
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: center 75%;
+
+  color: white;
+  width: 100%;
+  height: 100vh;
+
+}
+
+.chat-container {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #17183B90;
+  justify-content: flex-start;
+
+}
+
+/* ========== messages container ========== */
+.msgs-container {
+  width: 90%;
+  height: 80vh;
+  overflow-y: scroll;
+
+  padding: 30px;
+  background: radial-gradient(transparent, #00000040 50%);
+  border-radius: 20px;
+
+  /* resize: horizontal; */
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f140;
+  border-radius: 20px;
+  margin: 15px;
+
+
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(54, 53, 61);
+  border-radius: 20px;
+  margin: 10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(131, 92, 119);
+}
+
+/* ========== msg text input ========== */
+.div-msg-input {
+  padding: 5px;
+  width: 90%;
+  display: flex;
+}
+
+.div-msg-input input {
+
+  flex: 1;
+  margin-right: 5px;
+  padding: 10px;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-bottom: 2px solid var(--pcol5);
+  border-right: none;
+  transition: all 0.2s;
+
+  word-wrap: break-word;
+
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+
+
+}
+
+.div-msg-input input:focus,
+.div-msg-input input:hover {
+  border-bottom: 2px solid var(--pcol4);
+  outline: none;
+  caret-color: white;
+  color: white
+}
+
+.div-msg-input form {
+  width: 100%;
+  display: flex;
+}
+
+.btn-msgsend {
+  min-width: 70px;
+  max-width: 100px;
+  float: right;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+
+  color: var(--pcol5);
+
+}
+
+.btn-msgsend:hover {
+  color: var(--pcol4);
+  cursor: pointer;
+}
+
+/* ========== messages bubbles ========== */
+
+
+.msgbubble {
+  padding: 5px 20px 5px 10px;
+  margin: 10px;
+
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  transition: all 0.2s;
+
+
+  min-width: 150px;
+  width: fit-content;
+  background-color: #FF4F7920;
+}
+
+
+.mb-received:hover {
+  background-color: #FF4F79;
+}
+
+.msgbubble img {
+  width: 50px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.mb-sent {
+  background-color: #FFB49A20;
+  margin-left: auto;
+}
+
+.mb-sent:hover {
+  background-color: #FFB49A;
+  color: black;
 }

@@ -1,13 +1,14 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { SignOut } from './Login'
 import { auth, db } from '../fbaseapp.js'
-import { query, collection, orderBy, limit, onSnapshot, getDocs, doc} from "firebase/firestore"; 
+import { query, collection, orderBy, limit, onSnapshot, getDocs, doc } from "firebase/firestore";
 import SendMsg from './SendMsg';
 import { async } from '@firebase/util';
+import Nav from './Nav.js';
 
 
 function Chat() {
+
     const [messages, setMsgs] = useState([])
 
     async function getChatMessages() {
@@ -15,40 +16,42 @@ function Chat() {
         const q = query(collection(db, "messages"), orderBy("createdAt"), limit(30));
         const unsub = onSnapshot(q, (qS) => {
 
-            console.log(" data: ", qS);
             setMsgs(qS.docs.map((doc) => {
                 let msgData = doc.data()
                 msgData.id = doc.id
                 return msgData
             }))
         });
-        
+
     }
 
-    useEffect(()=> {
+    useEffect(() => {
 
         getChatMessages()
 
-    }, [] )
+    }, [])
 
-    
+
     return (
-        <div>
-            <h2>Welcome!</h2>
-            <SignOut />
-            <div>
-                <div>
-                    {messages.map(({id, text, photoURL, uid})=> (
-                            
-                        <div key={id} className={`msgbubble msg ${uid == auth.currentUser.uid ? 'sent' : 'received' }`}>
+        <div className='sec-chat flexdiv'>
+            <div className='chat-container flexdiv'>
+                <Nav />
+
+                <div className='msgs-container'>
+                    <div id="chat-top"></div>
+                    {messages.map(({ id, text, photoURL, uid }) => (
+
+                        <div key={id} className={`msgbubble msg ${uid == auth.currentUser.uid ? 'mb-sent' : 'mb-received'}`}>
                             <img src={photoURL} alt="User profile image"></img>
                             <p>{text}</p>
                         </div>
 
                     ))}
+                    <div id="chat-bottom"></div>
                 </div>
+
+                <SendMsg />
             </div>
-            <SendMsg/>
         </div>
     )
 }

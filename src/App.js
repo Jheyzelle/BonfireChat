@@ -8,7 +8,8 @@ function App() {
   const [user] = useAuthState(auth)
   return (
     <>
-      { user ? <Chat/> : <Landing/> }
+      {user ? <Chat /> : <Landing />}
+      <p id="fcr">&copy; 2022 Jheyzelle </p>
     </>
   );
 }
