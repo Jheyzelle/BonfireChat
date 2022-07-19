@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/BonfireChat/static/css/main.e354af54.css",
-    "main.js": "/BonfireChat/static/js/main.c85b5ea7.js",
+    "main.css": "/BonfireChat/static/css/main.d1c5f92b.css",
+    "main.js": "/BonfireChat/static/js/main.65b0a23c.js",
     "static/js/787.db06ff48.chunk.js": "/BonfireChat/static/js/787.db06ff48.chunk.js",
+    "static/media/bfire-logo.gif": "/BonfireChat/static/media/bfire-logo.1b077630fbf7b1b97985.gif",
     "index.html": "/BonfireChat/index.html",
-    "main.e354af54.css.map": "/BonfireChat/static/css/main.e354af54.css.map",
-    "main.c85b5ea7.js.map": "/BonfireChat/static/js/main.c85b5ea7.js.map",
+    "main.d1c5f92b.css.map": "/BonfireChat/static/css/main.d1c5f92b.css.map",
+    "main.65b0a23c.js.map": "/BonfireChat/static/js/main.65b0a23c.js.map",
     "787.db06ff48.chunk.js.map": "/BonfireChat/static/js/787.db06ff48.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e354af54.css",
-    "static/js/main.c85b5ea7.js"
+    "static/css/main.d1c5f92b.css",
+    "static/js/main.65b0a23c.js"
   ]
 }
